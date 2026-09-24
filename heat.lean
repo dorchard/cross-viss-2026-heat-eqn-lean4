@@ -1,5 +1,5 @@
 import Mathlib
---import HeatCore
+import HeatCore
 
 -- Shifting the index is a bijection on Fin n, so it does not change the sum
 lemma sum_shift [AddCommMonoid a] [NeZero n] (u : Vector a n) (k : Fin n) :
