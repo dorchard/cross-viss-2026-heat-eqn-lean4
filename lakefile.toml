@@ -1,0 +1,24 @@
+name = "heat"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["heat"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.34.0"
+
+[[lean_lib]]
+name = "heat"
+
+# Executable core (no Mathlib) plus the C-exported entry point,
+# built as a static library for the Python bindings in python/.
+[[lean_lib]]
+name = "HeatFFI"
+roots = ["HeatCore", "HeatFFI"]

@@ -1,27 +1,5 @@
 import Mathlib
-
-class abbrev Numerical (a : Type u) := Add a, Sub a, Mul a, OfNat a 2
-
-def get (u : Vector a n) (j : Fin n) : a :=
-  u[j]
-
--- Single step stencil
--- with periodic boundaries automatic by the use
--- of Fin n.
-def ftcs_stencil [Numerical a] [NeZero n]
-  (r : a) (u : Vector a n) (i : Fin n) : a :=
-  u[i] + r * (u[i - 1] - 2 * u[i] + u[i + 1])
-
--- Applying it everywhere spatially
-def scheme [Numerical a] [NeZero n]
-   (r : a) (u : Vector a n) : Vector a n :=
-   Vector.ofFn (fun j => ftcs_stencil r u j)
-
--- Apply it temporally
-def run [Numerical a] [NeZero n]
-  (r : a) : Nat -> (u : Vector a n) -> Vector a n
-  | 0    , u => u
-  | m + 1, u => scheme r (run r m u)
+--import HeatCore
 
 -- Shifting the index is a bijection on Fin n, so it does not change the sum
 lemma sum_shift [AddCommMonoid a] [NeZero n] (u : Vector a n) (k : Fin n) :
