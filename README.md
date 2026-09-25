@@ -22,7 +22,7 @@ where `r = α Δt / Δx²`. It is stable for `r ≤ 0.5`.
 | [python/test_heat_lean.py](python/test_heat_lean.py) | Tests: checks the Lean output against a numpy implementation, checks conservation, edge cases (empty and non-contiguous arrays), and 10⁶ steps without stack overflow. |
 | [python/visualise.py](python/visualise.py) | Plots a simulation computed by the Lean code: a space-time heatmap and profiles over time (`heat.png`), plus an optional animation (`heat.gif`). |
 | [lakefile.toml](lakefile.toml) | Lake build config. Defines two libraries: `heat` (the proofs, the default target) and `HeatFFI` (the executable core for the bindings). |
-| [Example.agda](Example.agda) | A small standalone Agda example. It isn't part of the build. |
+| [other-examples/](other-examples/) | Small examples of using the Agda and Lean theorem provers, from a group discussion: [Example.agda](other-examples/Example.agda) and [add.lean](other-examples/add.lean) (a Lean proof about a Python `add` function). These aren't part of the build. |
 
 Because the Python bindings call the compiled Lean `run` itself, the code that
 runs is the code the proofs are about. The trust gap is the usual one: `Float`
@@ -87,15 +87,3 @@ python3 visualise.py --n 400 --r 0.4 --steps 20000 --every 20
 `visualise.py` options: `--n` grid points (default 200), `--r` coefficient
 (0.25), `--steps` total time steps (5000), `--every` steps between recorded
 snapshots (5), `--out` output file (`heat.png`).
-
-## GitHub configuration
-
-To set up your new GitHub repository, follow these steps:
-
-* Under your repository name, click **Settings**.
-* In the **Actions** section of the sidebar, click "General".
-* Check the box **Allow GitHub Actions to create and approve pull requests**.
-* Click the **Pages** section of the settings sidebar.
-* In the **Source** dropdown menu, select "GitHub Actions".
-
-After following the steps above, you can remove this section from the README file.
