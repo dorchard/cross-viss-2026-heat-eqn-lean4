@@ -1,0 +1,4 @@
+# Bindings (heat_lean.py) and tests
+numpy>=1.20
+# Visualisation (visualise.py); Pillow, used for the GIF, is installed with matplotlib
+matplotlib>=3.5
